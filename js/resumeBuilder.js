@@ -52,41 +52,7 @@ $("#skills").append(formattedSkill);
 
 }
 
-var education = {
-	"schools": [
-		{
-			"name": "Oulu University of Applied Sciences",
-			"degree": "BBA",
-			"majors": ["IT", "Business"],
-			"dates": "2008-2011",
-			"url": "http://oamk.fi"
-		},
-
-		{
-			"name": "University of Oulu",
-			"degree": "PhD",
-			"majors": "Animal Ecology",
-			"dates": "2000-2008",
-			"url": "http://oulu.fi"
-		}
-	],
-
-	"onlineCourses": [
-		{
-			"title": "JavaScript",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "http://www.udacity.com/course/ud804"
-		},
-
-		{
-			"title": "Intro to HTML and CSS",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "http://www.udacity.com/course/ud804"
-		}
-	]
-}
+// WORK EXPERIENCE
 
 var work = {
 	"jobs": [
@@ -117,6 +83,9 @@ var work = {
 }
 
 work.display = function() {
+
+
+	
 	for (job in work.jobs) {
 		// creat new div for work experience
 		$("#workExperience").append(HTMLworkStart);
@@ -186,37 +155,95 @@ projects.display = function() {
 projects.display();
 
 // EDUCATION
+
 education.display = function() {
+
+var education = {
+	
+	"schools": [
+	
+		{
+			"name": "Oulu University of Applied Sciences",
+			"degree": "BBA",
+			"majors": ["IT", "Business"],
+			"dates": "2008-2011",
+			"url": "http://oamk.fi"
+		},
+
+		{
+			"name": "University of Oulu",
+			"degree": "PhD",
+			"majors": "Animal Ecology",
+			"dates": "2000-2008",
+			"url": "http://www.oulu.fi/english/"
+		}
+	],
+
+	"onlineCourses": [
+		
+		{
+			"title": "JavaScript",
+			"school": "Udacity",
+			"dates": 2015,
+			"url": "http://www.udacity.com/"
+		},
+
+		{
+			"title": "Intro to HTML and CSS",
+			"school": "Udacity",
+			"dates": 2015,
+			"url": "http://www.udacity.com/"
+		}
+	]
+}
+
 	for (school in education.schools) {
-		// creat new div for schools
+		
 		$("#education").append(HTMLschoolStart);
 		
 		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
-		var formattedSchoolUrl = HTMLschoolName.replace("#", education.schools[school].url);
+		
 		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-		var formattedNameLinkDegree = formattedSchoolName + formattedDegree;
-
-		$(".education-entry:last").append(formattedNameLinkDegree);
+		
+		var formattedNameDegree = formattedSchoolName + formattedDegree;
+			
+		$(".education-entry:last").append(formattedNameDegree);
 
 		var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 		$(".education-entry:last").append(formattedSchoolDates);
 
 		var formattedMajors = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
 		$(".education-entry:last").append(formattedMajors);
+
+		var url = education.schools[school].url;
+		$(".education-entry:last a").attr("href", url);
+
+
 	}
 
 	$("#education").append(HTMLonlineClasses);
-	
-	for (course in education.onlineCourses) {			
+
+	for (course in education.onlineCourses) {
+
+		$("#education").append(HTMLschoolStart);		
 
 		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+		
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+
 		$(".education-entry:last").append(formattedOnlineTitle);
 
-		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+		// var formattedCourseSchool = formattedOnlineTitle + formattedOnlineSchool;
+
+		// $(".education-entry:last").append(formattedCourseSchool);
+		 
 		$(".education-entry:last").append(formattedOnlineSchool);
 
 		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
 		$(".education-entry:last").append(formattedOnlineDates);
+
+		var url = education.onlineCourses[course].url;
+		$(".education-entry:last a").attr("href", url);
 	}
 }
 

@@ -50,8 +50,8 @@ var HTMLschoolLocation = '<div class="location-text">%data%</div>';
 var HTMLschoolMajor = '<em><br>Major: %data%</em>';
 
 var HTMLonlineClasses = '<h3>Online Classes</h3>';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
+var HTMLonlineTitle = '%data%';
+var HTMLonlineSchool = '<a href="#">%data%</a>';
 var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
@@ -83,11 +83,6 @@ function logClicks(x,y) {
   );
   console.log('x location: ' + x + '; y location: ' + y);
 }
-
-$(document).click(function(loc) {
-  // your code goes here!
-});
-
 
 
 /*
