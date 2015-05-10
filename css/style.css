@@ -11,6 +11,7 @@
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
+  /*display: none;*/
 }
 
 h1 {
@@ -102,6 +103,10 @@ a {
 .white-text {
   font-weight: bold;
   color: #FFFFFF;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .gray {
@@ -212,4 +217,8 @@ span {
   .biopic {
     display: block;
   }
+}
+
+.online {
+  color: #999999;
 }

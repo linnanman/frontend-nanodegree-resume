@@ -1,5 +1,7 @@
+// BIO
+
 var bio = {
-	"name": "Vitali",
+	"name": "Vitali Reif",
 	"role": "Front Row Student",
 	"skills": ["learning", "thinking"],
 	"contacts": {
@@ -12,49 +14,55 @@ var bio = {
 	"welcomeMessage": "This is my Front-End resume",
 }
 
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-$("#header").prepend(formattedRole);
+bio.display = function() {
 
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").prepend(formattedName);
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+	$("#header").prepend(formattedRole);
 
-var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-$("#topContacts").append(formattedLocation);
+	var formattedName = HTMLheaderName.replace("%data%", bio.name);
+	$("#header").prepend(formattedName);
 
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-$("#topContacts").append(formattedMobile);
-$("#letsConnect").append(formattedMobile);
+	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+	$("#topContacts").append(formattedLocation);
 
-var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
-$("#topContacts").append(formattedEmail);
-$("#letsConnect").append(formattedEmail);
+	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+	$("#topContacts").append(formattedMobile);
+	$("#letsConnect").append(formattedMobile);
 
-var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
-$("#topContacts").append(formattedGithub);
-$("#letsConnect").append(formattedGithub);
+	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+	$("#topContacts").append(formattedEmail);
+	$("#letsConnect").append(formattedEmail);
 
-var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
-$("#header").append(formattedPic);
+	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+	$("#topContacts").append(formattedGithub);
+	$("#letsConnect").append(formattedGithub);
 
-var formattedWelcomeMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
-$("#header").append(formattedWelcomeMessage);
+	var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
+	$("#header").append(formattedPic);
+
+	var formattedWelcomeMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+	$("#header").append(formattedWelcomeMessage);
 
 
-if(bio.skills.length > 0) {
+	if(bio.skills.length > 0) {
 
-$("#header").append(HTMLskillsStart);
+	$("#header").append(HTMLskillsStart);
 
-var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-$("#skills").append(formattedSkill);
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
+	$("#skills").append(formattedSkill);
 
-var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-$("#skills").append(formattedSkill);
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+	$("#skills").append(formattedSkill);
 
+	}
 }
+
+bio.display();
 
 // WORK EXPERIENCE
 
 var work = {
+
 	"jobs": [
 		{
 			"title": "Web Specialist",
@@ -80,12 +88,11 @@ var work = {
 			"description": "usability evaluation, lecture materials"
 		}
 	]	
+
 }
 
 work.display = function() {
 
-
-	
 	for (job in work.jobs) {
 		// creat new div for work experience
 		$("#workExperience").append(HTMLworkStart);
@@ -109,27 +116,30 @@ work.display = function() {
 
 work.display();
 
-projects.display = function() {
-	
-	var sideProjects = {
-	
-		"projects": [
-	
-			{
-				"title": "Hakema",
-				"description": "Usability evaluation of a digital marketing tool",
-				"dates": 2014,
-				"images": ""
-			},
+// PROJECTS
 
-			{
-				"title": "TinyApp",
-				"description": "Feedback on user experience of a web/mobile app",
-				"dates": 2015,
-				"images": ""
-			}
-		]
-	}
+var sideProjects = {
+
+	"projects": [
+
+		{
+			"title": "Hakema",
+			"description": "Usability evaluation of a digital marketing tool",
+			"dates": 2014,
+			"images": "images/project1.png"
+		},
+
+		{
+			"title": "TinyApp",
+			"description": "Feedback on user experience of a web/mobile app",
+			"dates": 2015,
+			"images": "images/project2.png"
+		}
+	]
+}
+
+projects.display = function() {
+
 	for (project in sideProjects.projects) {
 		// creat new div for projects
 		$("#projects").append(HTMLprojectStart);
@@ -143,12 +153,15 @@ projects.display = function() {
 		var formattedDescription = HTMLprojectDescription.replace("%data%", sideProjects.projects[project].description);
 		$(".project-entry:last").append(formattedDescription);
 
-		if (sideProjects.projects[project].images.length > 0) {
+		var formattedProjectImage = HTMLprojectImage.replace("%data%", sideProjects.projects[project].images);
+		$(".project-entry:last").append(formattedProjectImage);
+
+		/*if (sideProjects.projects[project].images.length > 0) {
 			for (image in sideProjects.projects[project].images) {
 				var formattedImage = HTMLprojectImage.replace("%data%", sideProjects.projects[project].images[image]);
 				$(".project-entry:last").append(formattedImage);
 			}
-		}
+		}*/
 	}
 }
 
@@ -165,7 +178,7 @@ var education = {
 		{
 			"name": "Oulu University of Applied Sciences",
 			"degree": "BBA",
-			"majors": ["IT", "Business"],
+			"majors": "IT, Business",
 			"dates": "2008-2011",
 			"url": "http://oamk.fi"
 		},
@@ -233,10 +246,6 @@ var education = {
 
 		$(".education-entry:last").append(formattedOnlineTitle);
 
-		// var formattedCourseSchool = formattedOnlineTitle + formattedOnlineSchool;
-
-		// $(".education-entry:last").append(formattedCourseSchool);
-		 
 		$(".education-entry:last").append(formattedOnlineSchool);
 
 		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
@@ -257,3 +266,12 @@ $(document).click(function(loc) {
 
   logClicks(x,y);
 });
+
+/*$(document).ready(function() {
+
+	$('#education').on('click', 'h2', function() {
+		$(this).find('.education-entry').slideDown();
+	})
+
+});
+*/
