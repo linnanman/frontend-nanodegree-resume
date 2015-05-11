@@ -11,7 +11,7 @@
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
-  /*display: none;*/
+  display: none;
 }
 
 h1 {
@@ -76,7 +76,7 @@ p {
 a {
   color: #1199C3;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 5px;
   display: block;
 }
 
@@ -208,7 +208,7 @@ span {
 
 #mapDiv {
   height: 400px;
-  width: 100%;
+  width: 50%;
   padding-bottom: 5%;
 }
 
@@ -221,4 +221,5 @@ span {
 
 .online {
   color: #999999;
+  display: none;
 }

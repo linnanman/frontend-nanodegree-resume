@@ -3,7 +3,7 @@
 var bio = {
 	"name": "Vitali Reif",
 	"role": "Front Row Student",
-	"skills": ["learning", "thinking"],
+	"skills": ["learning", "thinking", "implementing"],
 	"contacts": {
 		"mobile": "050 363",
 		"email": "vr@gm.com",
@@ -27,15 +27,15 @@ bio.display = function() {
 
 	var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	$("#topContacts").append(formattedMobile);
-	$("#letsConnect").append(formattedMobile);
+	$("#footerContacts").append(formattedMobile);
 
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
 	$("#topContacts").append(formattedEmail);
-	$("#letsConnect").append(formattedEmail);
+	$("#footerContacts").append(formattedEmail);
 
 	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 	$("#topContacts").append(formattedGithub);
-	$("#letsConnect").append(formattedGithub);
+	$("#footerContacts").append(formattedGithub);
 
 	var formattedPic = HTMLbioPic.replace("%data%", bio.bioPic);
 	$("#header").append(formattedPic);
@@ -52,6 +52,9 @@ bio.display = function() {
 	$("#skills").append(formattedSkill);
 
 	var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
+	$("#skills").append(formattedSkill);
+
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
 	$("#skills").append(formattedSkill);
 
 	}
@@ -202,7 +205,7 @@ var education = {
 		},
 
 		{
-			"title": "Intro to HTML and CSS",
+			"title": "<br>Intro to HTML and CSS",
 			"school": "Udacity",
 			"dates": 2015,
 			"url": "http://www.udacity.com/"
@@ -241,13 +244,11 @@ var education = {
 		$("#education").append(HTMLschoolStart);		
 
 		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+		$(".education-entry:last").append(formattedOnlineTitle);
 		
 		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
-
-		$(".education-entry:last").append(formattedOnlineTitle);
-
 		$(".education-entry:last").append(formattedOnlineSchool);
-
+		
 		var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
 		$(".education-entry:last").append(formattedOnlineDates);
 
@@ -267,11 +268,28 @@ $(document).click(function(loc) {
   logClicks(x,y);
 });
 
-/*$(document).ready(function() {
+// ANIMATION FOR SECTIONS
 
-	$('#education').on('click', 'h2', function() {
-		$(this).find('.education-entry').slideDown();
-	})
+$(document).ready(function() {
 
+	$(this).find('h2').css('cursor', 'pointer');
+
+	$('#workExperience').click(function() {
+		$('.work-entry').slideToggle();
+	});
+
+	$('#projects').click(function() {		
+		$('.project-entry').slideToggle();
+	});
+	
+	$('#education').click(function() {
+		$('.education-entry').slideToggle();
+		$('.online').fadeToggle();
+	});
+	
+	$('#mapDiv').click(function() {
+		$('#map').slideToggle();
+	});
 });
-*/
+
+
